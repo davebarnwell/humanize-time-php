@@ -5,6 +5,8 @@
  * e.g.
  *  in 1 hour, 2 minutes
  *  2 hours, 10 minutes ago
+ *
+ * @author Dave Barnwell <dave@freshsauce.co.uk>
  */
 class HumanizeTime {
 
