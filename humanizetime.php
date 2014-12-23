@@ -1,10 +1,9 @@
 <?php
 
 /**
- * Return a nicely formatted time
- * e.g.
- *  in 1 hour, 2 minutes
- *  2 hours, 10 minutes ago
+ * given a time express it as relative to now a bit like twitter.
+ * in x minutes OR x hours ago.
+ * handles future as well as past times
  *
  * @author Dave Barnwell <dave@freshsauce.co.uk>
  */
