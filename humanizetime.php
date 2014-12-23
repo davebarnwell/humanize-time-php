@@ -23,10 +23,25 @@ class HumanizeTime {
       'second' => 1
   );
 
+  /**
+   * Initialise with a time string, anthing that can be parsed with strtotime() is ok
+   *
+   * @param string $timeStr 
+   */
   function __construct( $timeStr ) {
     $this->time = strtotime( $timeStr );
   }
 
+
+  /**
+   * Return a nicely formatted time relative to now
+   * e.g.
+   *  in 1 hour, 2 minutes
+   *  2 hours, 10 minutes ago
+   *
+   * @param string $granularity default 2, specifies max how many time parts should be returned.
+   * @return string
+   */
   function humanize( $granularity = 2 ) {
     $date       = $this->time;
     $difference = time() - $date;
