@@ -1,7 +1,8 @@
 humanize-time-php
 =================
 
-given a time express it as relative to now in
+  given a time express it as relative to now a bit like twitter. in x minutes OR x hours ago.
+  handles future as well as past times
 
 
     $dt = new HumanizeTime('2014-12-01 15:30:32');
