@@ -74,6 +74,75 @@ class HumanizeTime {
     $final = $prefix . implode(', ',$parts) . $suffix;
     return $final;
   }
+  
+  /**
+   * Return humanized date for yesterday, today, and tomorrow, else return date.
+   *
+   * @param        $date
+   * @param string $format
+   * @return bool|string
+   */
+  public function naturalday($date, $format = 'Y-m-d')
+  {
+      $date = date($format, strtotime($date));
+      if($date == $this->yesterday($format)) return 'yesterday';
+      if($date == $this->tomorrow($format)) return 'tomorrow';
+      if($date == $this->today($format)) return 'today';
+      return $date;
+  }
+
+  /**
+   * Get yesterdays date
+   *
+   * @param string $format
+   * @return bool|string
+   */
+  public function yesterday($format = 'Y-m-d')
+  {
+      return date($format, strtotime('-1 day'));
+  }
+
+  /**
+   * Get tomorrows date
+   *
+   * @param string $format
+   * @return bool|string
+   */
+  public function tomorrow($format = 'Y-m-d')
+  {
+      return date($format, strtotime('+1 day'));
+  }
+
+  /**
+   * Get todays date
+   *
+   * @param string $format
+   * @return bool|string
+   */
+  public function today($format = 'Y-m-d')
+  {
+      return date($format);
+  }
+
+  /**
+   * Check if a date is on the weekend.
+   *
+   * @param $date
+   * @return bool
+   */
+  public function isWeekend($date) {
+      return (date('N', strtotime($date)) >= 6);
+  }
+
+  /**
+   * Check if a date is a weekday, utilizes the isWeekend function.
+   *
+   * @param $date
+   * @return bool
+   */
+  public function isWeekday($date) {
+      return ! $this->isWeekend($date);
+  }
 }
 
 ?>
