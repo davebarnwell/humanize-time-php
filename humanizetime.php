@@ -68,7 +68,7 @@ class HumanizeTime {
         break;
       }
     }
-    if ( ! $parts) {
+    if (empty($parts)) {
       $parts[] = 'now';
     }
     $final = $prefix.implode(', ', $parts).$suffix;
