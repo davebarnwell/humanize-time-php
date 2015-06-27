@@ -27,7 +27,7 @@ class HumanizeTime {
    *
    * @param string $timeStr 
    */
-  function __construct($timeStr) {
+  public function __construct($timeStr) {
     $this->time = strtotime($timeStr);
   }
 
@@ -41,7 +41,7 @@ class HumanizeTime {
    * @param integer $granularity default 2, specifies max how many time parts should be returned.
    * @return string
    */
-  function humanize($granularity = 2) {
+  public function humanize($granularity = 2) {
     $date       = $this->time;
     $difference = time() - $date;
     $prefix = '';
