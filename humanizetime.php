@@ -27,8 +27,8 @@ class HumanizeTime {
    *
    * @param string $timeStr 
    */
-  function __construct( $timeStr ) {
-    $this->time = strtotime( $timeStr );
+  function __construct($timeStr) {
+    $this->time = strtotime($timeStr);
   }
 
 
@@ -38,10 +38,10 @@ class HumanizeTime {
    *  in 1 hour, 2 minutes
    *  2 hours, 10 minutes ago
    *
-   * @param string $granularity default 2, specifies max how many time parts should be returned.
+   * @param integer $granularity default 2, specifies max how many time parts should be returned.
    * @return string
    */
-  function humanize( $granularity = 2 ) {
+  function humanize($granularity = 2) {
     $date       = $this->time;
     $difference = time() - $date;
     $prefix = '';
@@ -55,23 +55,23 @@ class HumanizeTime {
     }
 
     $parts = array();
-    foreach ( $this->PERIODS as $key => $value ) {
-      if ( $difference >= $value ) {
-        $time = floor( $difference / $value );
+    foreach ($this->PERIODS as $key => $value) {
+      if ($difference >= $value) {
+        $time = floor($difference / $value);
         $difference %= $value;
         if ($time > 0) {
-          $parts[] = $time . ' ' . $key . ( ( $time > 1 ) ? 's' : '' );
+          $parts[] = $time.' '.$key.(($time > 1) ? 's' : '');
         }
-        $granularity --;
+        $granularity--;
       }
-      if ( $granularity == '0' ) {
+      if ($granularity == '0') {
         break;
       }
     }
-    if (!$parts) {
+    if ( ! $parts) {
       $parts[] = 'now';
     }
-    $final = $prefix . implode(', ',$parts) . $suffix;
+    $final = $prefix.implode(', ', $parts).$suffix;
     return $final;
   }
   
@@ -80,14 +80,14 @@ class HumanizeTime {
    *
    * @param        $date
    * @param string $format
-   * @return bool|string
+   * @return string
    */
   public function naturalday($date, $format = 'Y-m-d')
   {
       $date = date($format, strtotime($date));
-      if($date == $this->yesterday($format)) return 'yesterday';
-      if($date == $this->tomorrow($format)) return 'tomorrow';
-      if($date == $this->today($format)) return 'today';
+      if ($date == $this->yesterday($format)) return 'yesterday';
+      if ($date == $this->tomorrow($format)) return 'tomorrow';
+      if ($date == $this->today($format)) return 'today';
       return $date;
   }
 
@@ -95,7 +95,7 @@ class HumanizeTime {
    * Get yesterdays date
    *
    * @param string $format
-   * @return bool|string
+   * @return string
    */
   public function yesterday($format = 'Y-m-d')
   {
@@ -106,7 +106,7 @@ class HumanizeTime {
    * Get tomorrows date
    *
    * @param string $format
-   * @return bool|string
+   * @return string
    */
   public function tomorrow($format = 'Y-m-d')
   {
@@ -117,7 +117,7 @@ class HumanizeTime {
    * Get todays date
    *
    * @param string $format
-   * @return bool|string
+   * @return string
    */
   public function today($format = 'Y-m-d')
   {
