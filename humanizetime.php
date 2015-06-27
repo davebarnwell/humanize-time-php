@@ -85,9 +85,15 @@ class HumanizeTime {
   public function naturalday($date, $format = 'Y-m-d')
   {
       $date = date($format, strtotime($date));
-      if ($date == $this->yesterday($format)) return 'yesterday';
-      if ($date == $this->tomorrow($format)) return 'tomorrow';
-      if ($date == $this->today($format)) return 'today';
+      if ($date == $this->yesterday($format)) {
+        return 'yesterday';
+      }
+      if ($date == $this->tomorrow($format)) {
+        return 'tomorrow';
+      }
+      if ($date == $this->today($format)) {
+        return 'today';
+      }
       return $date;
   }
 
